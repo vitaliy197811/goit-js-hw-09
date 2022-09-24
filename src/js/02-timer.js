@@ -19,6 +19,10 @@ const options = {
     minuteIncrement: 1,
     onClose(selectedDates) {
         currentTime = selectedDates[0];
+        daysRef.textContent = '00';
+        hoursRef.textContent = '00';
+        minutesRef.textContent = '00';
+        secondsRef.textContent = '00';
         if (selectedDates[0] < new Date()) {
             window.alert('Please choose a date in the future');
         } else {
@@ -42,6 +46,8 @@ function timer() {
         clearInterval(intervalId);
         return;
     }
+    startRef.setAttribute('disabled', '');
+
     const { days, hours, minutes, seconds } = convertMs(getTimeComponents);
     daysRef.textContent = days;
     hoursRef.textContent = hours;
