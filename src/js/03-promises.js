@@ -10,7 +10,7 @@ function onFormSubmit(e) {
   let inputStep = Number(document.querySelector('[name="step"]').value);
   let inputAmount = Number(document.querySelector('[name="amount"]').value);
   
-  if ( inputDelay >= 0 && inputStep >= 0 && inputAmount >= 0 ) {
+  if ( inputDelay >= 0 && inputStep >= 0) {
     for (let position = 1; position <= inputAmount; position += 1) {
       createPromise(position, inputDelay)
       .then((position, delay) => Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`))
