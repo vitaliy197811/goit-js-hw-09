@@ -12,9 +12,10 @@ function onFormSubmit(e) {
   
   if ( inputDelay >= 0 && inputStep >= 0) {
     for (let position = 1; position <= inputAmount; position += 1) {
+      
       createPromise(position, inputDelay)
-      .then((position, delay) => Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`))
-      .catch((position, delay) => Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`));
+      .then(({position, delay}) => Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`, {position: 'center-center'}))
+      .catch(({position, delay}) => Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`, {position: 'center-center'}));
       inputDelay += inputStep;
     }
   } else {
@@ -35,4 +36,3 @@ function createPromise(position, delay) {
     }, delay);
   });
 }
-
